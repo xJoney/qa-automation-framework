@@ -12,3 +12,11 @@ def test_valid_login(driver):
     # time.sleep(15)
 
     assert "inventory" in driver.current_url, "Login failed"
+
+def test_invalid_login(driver):
+    login_page = LoginPage(driver)
+
+    # open saucedemo and logs in with wrong info
+    login_page.open()
+    login_page.login("user", "password123")
+    assert login_page.get_error_message() != ""
