@@ -20,3 +20,8 @@ class InventoryPage:
             return int(self.driver.find_element(*self.cart_badge).text)
         except:
             return 0
+        
+    def logout(self):
+        self.driver.find_element(*self.menu_button).click()
+        self.driver.implicitly_wait(1)
+        self.driver.find_element(*self.logout_link).click()

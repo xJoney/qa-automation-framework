@@ -23,6 +23,16 @@ def test_invalid_login(driver):
     login_page.login("user", "password123")
     assert login_page.get_error_message() != ""
 
+# LOGOUT TEST -------------------------------------
+def test_logout(driver):
+    login_page = LoginPage(driver)
+    login_page.open()
+    login_page.login("standard_user", "secret_sauce")
+
+    inventory = InventoryPage(driver)
+    inventory.logout()
+
+    assert "saucedemo.com" in driver.current_url
 
 # ADD/REMOVE ITEM FROM CART TESTS------------------------------
 def test_add_to_cart(driver):
